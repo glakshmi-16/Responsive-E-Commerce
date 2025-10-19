@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEase - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">
+        <img src="https://img.pikbest.com/png-images/20250117/3d-shopping-bag-with-red-cart-icon-and-coin-symbol-on-black-background_11406410.png!sw800" alt="ShopEase Bag" class="logo-bag-icon">
+        ShopEase
+      </h1>
+      <nav>
+        <a href="cart.html" class="cart-link">🛒 Cart <span id="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+  <nav class="category-navbar">
+    <ul id="category-list" class="category-list">
+      <!-- Categories with images will be injected here -->
+    </ul>
+  </nav>
+  <div class="banner-bg">
+    <div class="banner-slider">
+      <button class="banner-arrow left" id="banner-prev">&#8592;</button>
+      <div class="banner-images">
+        <img src="https://images.all-free-download.com/images/thumbjpg/ecommerce_website_banner_template_shoppers_sketch_6920121.jpg" class="banner-img" style="display:block;">
+        <img src="https://thumbs.dreamstime.com/b/classy-furniture-wooden-terrace-green-beautiful-garden-furniture-wooden-terrace-green-beautiful-garden-213239390.jpg" class="banner-img" style="display:none;">
+        <img src="https://img.freepik.com/premium-psd/fashion-sales-social-media-facebook-cover-webinar-design_671392-877.jpg?semt=ais_hybrid&w=740" class="banner-img" style="display:none;">
+        <img src="https://www.kandharam.co.in/image/catalog/Misc/mobile_accessories_Banner.jpg" class="banner-img" style="display:none;">
+        <img src="https://www.shutterstock.com/image-photo/horizontal-banner-kitchen-interior-table-260nw-404364997.jpg" class="banner-img" style="display:none;">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/61b01b55463165.59851186ec81e.jpg" class="banner-img" style="display:none;">
+        <img src="https://www.shutterstock.com/image-photo/adorable-children-on-different-color-260nw-2477271221.jpg" class="banner-img" style="display:none;">
+      </div>
+      <button class="banner-arrow right" id="banner-next">&#8594;</button>
+    </div>
+  </div>
+  <main class="main-flex">
+    <aside class="sidebar full-length-sidebar">
+      <h2>Filter by</h2>
+      <div class="filter-group">
+        <label for="brand-select">Brand</label>
+        <select id="brand-select">
+          <option value="all">All Brands</option>
+          <!-- Brands will be injected here -->
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="rating-select">Rating</label>
+        <select id="rating-select">
+          <option value="all">All Ratings</option>
+          <option value="4">4★ & above</option>
+          <option value="3">3★ & above</option>
+          <option value="2">2★ & above</option>
+          <option value="1">1★ & above</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="price-range">Price</label>
+        <input type="range" id="price-range" min="0" max="1000" step="10">
+        <span id="price-value">$0 - $1000</span>
+      </div>
+    </aside>
+    <section class="products-section">
+      <div id="products-grid" class="products-grid">
+        <!-- Products will be injected here -->
+      </div>
+    </section>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Banner slider logic
+    const slides = document.querySelectorAll('.banner-img');
+    let currentSlide = 0;
+    function showSlide(idx) {
+      slides.forEach((img, i) => img.style.display = i === idx ? 'block' : 'none');
+    }
+    document.getElementById('banner-prev').onclick = () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    };
+    document.getElementById('banner-next').onclick = () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    };
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 3000);
+  </script>
+</body>
+</html> 
